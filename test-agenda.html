@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="test-agenda.css">
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <title>Agenda dynamique</title>
+</head>
+
+<body>
+  <div class="category-filters">
+    <button class="filter-btn all-tag active" onclick="filterEvents(['all'], event)"
+      aria-label="Afficher tous les événements">Tous</button>
+    <button class="filter-btn atelier" onclick="filterEvents(['atelier', 'atelier-arch'], event)"
+      aria-label="Afficher seulement les ateliers">Ateliers</button>
+    <button class="filter-btn conference" onclick="filterEvents(['conference', 'conference-jc', 'rencontre'], event)"
+      aria-label="Afficher seulement les conférences et les rencontres">Conférences &
+      rencontres</button>
+    <button class="filter-btn cafe-arch" onclick="filterEvents(['cafe-arch'], event)"
+      aria-label="Afficher seulement les café-archives">Café-archives</button>
+    <button class="filter-btn vin-arch" onclick="filterEvents(['vin-arch'], event)"
+      aria-label="Afficher seulement les dégustations de vin">Archives en vin</button>
+    <button class="filter-btn concert" onclick="filterEvents(['concert'], event)"
+      aria-label="Afficher seulement les concerts">Concerts</button>
+    <button class="filter-btn exposition" onclick="filterEvents(['exposition'], event)"
+      aria-label="Afficher seulement les expositions et les visites d'exposition">Expositions</button>
+    <button class="filter-btn promenade" onclick="filterEvents(['promenade', 'visite'], event)"
+      aria-label="Afficher seulement les promenades et les visites">Promenades & visites</button>
+    <button class="filter-btn projection" onclick="filterEvents(['projection'], event)"
+      aria-label="Afficher seulement les projections">Projections</button>
+  </div>
+
+  <div class="container">
+    <!-- Les événements s'injectent ici -->
+  </div>
+
+  <template id="event-template">
+    <div class="event" data-category="" data-date="">
+      <div class="event-date"></div>
+      <div class="event-tag"></div>
+      <h3 class="event-title"></h3>
+      <div class="event-short"></div>
+      <button class="more-button">Plus d'infos</button>
+      <div class="more-text">
+        <div class="event-long"></div>
+        <div class="event-duration"></div>
+        <div class="event-contact"></div>
+        <div class="event-contact-tel"></div>
+        <div class="event-contact-url"></div>
+        <div class="event-lieu"></div>
+        <div class="event-lieu-detail"></div>
+        <div class="event-information"></div>
+        <img class="event-image" style="display:none;" />
+        <a class="reserve-btn" href="#" style="display:none;">Réserver</a>
+      </div>
+      <span class="event-ancre" hidden></span>
+    </div>
+  </template>
+
+  <!-- Pop-up -->
+  <div id="event-overlay">
+    <div id="event-modal">
+      <button onclick="closeSlide()" class="close-modal">×</button>
+      <div id="event-modal-content"></div>
+    </div>
+  </div>
+
+  <script src="test-agenda.js"></script>
+</body>
+
+</html>
