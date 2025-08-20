@@ -1,0 +1,710 @@
+/* STYLES DEPENDING ON CATEGORY */
+:root {
+    --ag_atelier-color: #781f1e;
+    --ag_atelier-arch-color: #574359;
+    --ag_cafe-arch-color: #BF045B;
+    --ag_concert-color: #007566;
+    --ag_conference-color: #B8860B;
+    --ag_conference-jc-color: #6C2B00;
+    --ag_exposition-color: #BF1B1E;
+    --ag_projection-color: #F27405;
+    --ag_promenade-color: #13678A;
+    --ag_rencontre-color: #764C50;
+    --ag_vin-arch-color: #7B1FA2;
+    --ag_visite-color: #1E88E5;
+}
+
+/* Event background, reservation button and tags & text colors */
+/* Ateliers */
+.ag_event-tag.ag_atelier::before         { background-image: url("media/icone-atelier.png"); }
+.ag_event-tag.ag_atelier::after          { content: "Atelier"; }
+.ag_atelier         { background-color: var(--ag_atelier-color); }
+.ag_atelier .ag_reserve-btn         { color: var(--ag_atelier-color); }
+
+/* Atelier-archives */
+.ag_event-tag.ag_atelier-arch::before    { background-image: url("media/icone-atelier-arch.png"); }
+.ag_event-tag.ag_atelier-arch::after     { content: "Atelier Archives"; }
+.ag_atelier-arch    { background-color: var(--ag_atelier-arch-color); }
+.ag_atelier-arch .ag_reserve-btn    { color: var(--ag_atelier-arch-color); }
+
+/* Café-archives */
+.ag_event-tag.ag_cafe-arch::before       { background-image: url("media/icone-cafe-arch.png"); }
+.ag_event-tag.ag_cafe-arch::after        { content: "Cafés-Archives"; }
+.ag_cafe-arch       { background-color: var(--ag_cafe-arch-color); }
+.ag_cafe-arch .ag_reserve-btn       { color: var(--ag_cafe-arch-color); }
+
+/* Concerts */
+.ag_event-tag.ag_concert::before         { background-image: url("media/icone-concert.png"); }
+.ag_event-tag.ag_concert::after          { content: "Concert"; }
+.ag_concert         { background-color: var(--ag_concert-color); }
+.ag_concert .ag_reserve-btn         { color: var(--ag_concert-color); }
+
+/* Conférences */
+.ag_event-tag.ag_conference::before      { background-image: url("media/icone-conference.png"); }
+.ag_event-tag.ag_conference::after       { content: "Conférence"; }
+.ag_conference      { background-color: var(--ag_conference-color); }
+.ag_conference .ag_reserve-btn      { color: var(--ag_conference-color); }
+
+/* Conférences jeunes chercheurs */
+.ag_event-tag.ag_conference-jc::before   { background-image: url("media/icone-conference-jc.png"); }
+.ag_event-tag.ag_conference-jc::after    { content: "Conférence jeunes chercheurs"; }
+.ag_conference-jc   { background-color: var(--ag_conference-jc-color); }
+.ag_conference-jc .ag_reserve-btn   { color: var(--ag_conference-jc-color); }
+
+/* Expositions */
+.ag_event-tag.ag_exposition::before      { background-image: url("media/icone-exposition.png"); }
+.ag_event-tag.ag_exposition::after       { content: "Exposition"; }
+.ag_exposition      { background-color: var(--ag_exposition-color); }
+.ag_exposition .ag_reserve-btn      { color: var(--ag_exposition-color); }
+
+/* Projections */
+.ag_event-tag.ag_projection::before      { background-image: url("media/icone-projection.png"); }
+.ag_event-tag.ag_projection::after       { content: "Projection"; }
+.ag_projection      { background-color: var(--ag_projection-color); }
+.ag_projection .ag_reserve-btn      { color: var(--ag_projection-color); }
+
+/* Promenades */
+.ag_event-tag.ag_promenade::before       { background-image: url("media/icone-promenade.png"); }
+.ag_event-tag.ag_promenade::after        { content: "Promenade"; }
+.ag_promenade       { background-color: var(--ag_promenade-color); }
+.ag_promenade .ag_reserve-btn       { color: var(--ag_promenade-color); }
+
+/* Rencontres */
+.ag_event-tag.ag_rencontre::before       { background-image: url("media/icone-rencontre.png"); }
+.ag_event-tag.ag_rencontre::after        { content: "Rencontre"; }
+.ag_rencontre       { background-color: var(--ag_rencontre-color); }
+.ag_rencontre .ag_reserve-btn       { color: var(--ag_rencontre-color); }
+
+/* Vin archives */
+.ag_event-tag.ag_vin-arch::before        { background-image: url("media/icone-vin-arch.png"); }
+.ag_event-tag.ag_vin-arch::after         { content: "Archives en vin"; }
+.ag_vin-arch        { background-color: var(--ag_vin-arch-color); }
+.ag_vin-arch .ag_reserve-btn        { color: var(--ag_vin-arch-color); }
+
+/* Visites */
+.ag_event-tag.ag_visite::before          { background-image: url("media/icone-visite.png"); }
+.ag_event-tag.ag_visite::after           { content: "Visite"; }
+.ag_visite          { background-color: var(--ag_visite-color); }
+.ag_visite .ag_reserve-btn          { color: var(--ag_visite-color); }
+
+/* General layout */
+#ag_agenda-ad21 {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Events grid */
+.ag_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+    align-items: stretch;
+    margin-top: 3em;
+}
+
+/* Event block */
+.ag_event {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 1.2em;
+    margin: 0.2em 0.4em;
+    padding: 1.5em 1.2em 6em 1.2em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: box-shadow 0.3s, background 0.3s, color 0.3s;
+    overflow: visible;
+    min-height: 0;
+}
+
+.ag_event.expanded {
+    color: #FFF;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    z-index: 2;
+}
+
+.ag_event.expanded.ag_more-button,
+.ag_event.expanded .ag_event-date,
+.ag_event.expanded .ag_event-title {
+    color: #FFF;
+}
+
+/* Animation to hide event */
+.ag_event.hide {
+    transform: translateY(20px);
+    /* Initial downward offset */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* Smooth transition */
+}
+
+/* Category tags */
+.ag_event-tag {
+    color: #FFF;
+    position: relative;
+    padding-left: 5vh;
+    /* To shift text to the right of the icon */
+    text-transform: uppercase;
+    z-index: 999;
+    padding-top: 2%;
+    letter-spacing: 0.050em;
+}
+
+.ag_event-tag::before {
+    display: inline-block;
+    position: absolute;
+    width: 5vh;
+    height: 5vh;
+    top: 70%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: translateY(-50%);
+    /* To center the icon exactly */
+    transition: all 0.3s ease;
+    /* Transition for animations */
+    left: 0;
+    content: "";
+}
+
+.ag_event-tag::after {
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+    /* Text appearance animation */
+}
+
+/* Date & title */
+.ag_event-date {
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    letter-spacing: 0.010em;
+}
+
+.ag_event-title {
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 1.4em;
+    margin: 1.2em 0 1em 0;
+    padding: 1.5em 0 1.5em 0;
+    letter-spacing: 0.040em;
+}
+
+/* Main text & details */
+.ag_event-txt,
+.ag_more-text {
+    text-align: justify;
+}
+
+/* Event details */
+.ag_more-text {
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s cubic-bezier(.4, 0, .2, 1), opacity 0.3s, padding 0.3s;
+    padding: 0 0;
+    margin: 0;
+    background: none;
+}
+
+.ag_event.expanded .ag_more-text {
+    opacity: 1;
+    max-height: 2000px;
+    padding: 0.5em 0 0.5em 0;
+    margin: 1em 0 0 0;
+    background: none;
+}
+
+/* More button & less button */
+.ag_more-button, .ag_more-button-bottom {
+    display: inline-block;
+    text-transform: uppercase;
+    border: 0.08em solid #FFF;
+    padding: 0.4em 1em;
+    background-color: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0;
+    color: #FFF;
+    border-radius: 0.4em;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.ag_more-button-bottom {
+    display: none;
+}
+
+.ag_event.expanded .ag_more-text .ag_more-button-bottom {
+    display: inline-block;
+}
+
+.ag_more-button:hover,
+.ag_more-button-bottom:hover,
+.ag_more-button-bottom:focus {
+    background-color: #FFF;
+    color: #000;
+    border: 0.08em solid #000;
+}
+
+/* Category filters */
+.ag_category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+    text-align: center;
+    margin: 1vh 0.2vh 1vh 0vh;
+}
+
+.ag_filter-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border: 0.08em solid #000;
+    padding: 2%;
+    background-color: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 1% 1% 2% 2%;
+    color: #FFF;
+}
+
+.ag_filter-btn:hover {
+    background-color: #FFF;
+    color: #000;
+    border: 0.08em solid #000;
+}
+
+.ag_filter-btn.active {
+    background-color: #FFF;
+    color: #000;
+
+}
+
+.ag_all-tag {
+    background-color: #000;
+    color: #FFF;
+}
+
+/* Styles for different categories */
+.ag_atelier {
+    background-color: var(--ag_atelier-color);
+}
+
+.ag_event-tag.ag_atelier::before {
+    background-image: url("media/icone-atelier.png");
+}
+
+.ag_event-tag.ag_atelier::after {
+    content: "Atelier";
+}
+
+.ag_atelier-arch {
+    background-color: var(--ag_atelier-arch-color);
+}
+
+.ag_event-tag.ag_atelier-arch::before {
+    background-image: url("media/icone-atelier-arch.png");
+}
+
+.ag_event-tag.ag_atelier-arch::after {
+    content: "Atelier Archives";
+}
+
+.ag_cafe-arch {
+    background-color: var(--ag_cafe-arch-color);
+}
+
+.ag_event-tag.ag_cafe-arch::before {
+    background-image: url("media/icone-cafe-arch.png");
+}
+
+.ag_event-tag.ag_cafe-arch::after {
+    content: "Cafés-Archives";
+}
+
+.ag_concert {
+    background-color: var(--ag_concert-color);
+}
+
+.ag_event-tag.ag_concert::before {
+    background-image: url("media/icone-concert.png");
+}
+
+.ag_event-tag.ag_concert::after {
+    content: "Concert";
+}
+
+.ag_conference {
+    background-color: var(--ag_conference-color);
+}
+
+.ag_event-tag.ag_conference::before {
+    background-image: url("media/icone-conference.png");
+}
+
+.ag_event-tag.ag_conference::after {
+    content: "Conférence";
+}
+
+.ag_conference-jc {
+    background-color: var(--ag_conference-jc-color);
+}
+
+.ag_event-tag.ag_conference-jc::before {
+    background-image: url("media/icone-conference-jc.png");
+}
+
+.ag_event-tag.ag_conference-jc::after {
+    content: "Conférence jeunes chercheurs";
+}
+
+.ag_exposition {
+    background-color: var(--ag_exposition-color);
+}
+
+.ag_event-tag.ag_exposition::before {
+    background-image: url("media/icone-exposition.png");
+}
+
+.ag_event-tag.ag_exposition::after {
+    content: "Exposition";
+}
+
+.ag_projection {
+    background-color: var(--ag_projection-color);
+}
+
+.ag_event-tag.ag_projection::before {
+    background-image: url("media/icone-projection.png");
+}
+
+.ag_event-tag.ag_projection::after {
+    content: "Projection";
+}
+
+.ag_promenade {
+    background-color: var(--ag_promenade-color);
+}
+
+.ag_event-tag.ag_promenade::before {
+    background-image: url("media/icone-promenade.png");
+}
+
+.ag_event-tag.ag_promenade::after {
+    content: "Promenade";
+}
+
+.ag_rencontre {
+    background-color: var(--ag_rencontre-color);
+}
+
+.ag_event-tag.ag_rencontre::before {
+    background-image: url("media/icone-rencontre.png");
+}
+
+.ag_event-tag.ag_rencontre::after {
+    content: "Rencontre";
+}
+
+.ag_vin-arch {
+    background-color: var(--ag_vin-arch-color);
+}
+
+.ag_event-tag.ag_vin-arch::before {
+    background-image: url("media/icone-vin-arch.png");
+}
+
+.ag_event-tag.ag_vin-arch::after {
+    content: "Archives en vin";
+}
+
+.ag_visite {
+    background-color: var(--ag_visite-color);
+}
+
+.ag_event-tag.ag_visite::before {
+    background-image: url("media/icone-visite.png");
+}
+
+.ag_event-tag.ag_visite::after {
+    content: "Visite";
+}
+
+/* Reservation button */
+.ag_atelier .ag_reserve-btn {
+    color: var(--ag_atelier-color);
+}
+
+.ag_atelier-arch .ag_reserve-btn {
+    color: var(--ag_atelier-arch-color);
+}
+
+.ag_cafe-arch .ag_reserve-btn {
+    color: var(--ag_cafe-arch-color);
+}
+
+.ag_concert .ag_reserve-btn {
+    color: var(--ag_concert-color);
+}
+
+.ag_conference .ag_reserve-btn {
+    color: var(--ag_conference-color);
+}
+
+.ag_conference-jc .ag_reserve-btn {
+    color: var(--ag_conference-jc-color);
+}
+
+.ag_exposition .ag_reserve-btn {
+    color: var(--ag_exposition-color);
+}
+
+.ag_projection .ag_reserve-btn {
+    color: var(--ag_projection-color);
+}
+
+.ag_promenade .ag_reserve-btn {
+    color: var(--ag_promenade-color);
+}
+
+.ag_rencontre .ag_reserve-btn {
+    color: var(--ag_rencontre-color);
+}
+
+.ag_vin-arch .ag_reserve-btn {
+    color: var(--ag_vin-arch-color);
+}
+
+.ag_visite .ag_reserve-btn {
+    color: var(--ag_visite-color);
+}
+
+@keyframes pulseHighlight {
+    0% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.02);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+}
+
+/* Ancre/ID */
+.ag_event-id {
+    display: block;
+    height: 1px;
+    margin-top: -80px;
+    /* Décalage si tu as un header fixe */
+    visibility: hidden;
+}
+
+/* Gentle animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Poster event */
+.ag_event-image {
+    display: block;
+    margin: 1.2em auto 1em auto;
+    max-width: 220px;
+    border-radius: 0.7em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+/* Reservation button */
+.ag_reserve-btn {
+    display: inline-block;
+    text-transform: uppercase;
+    border: 0.08em solid currentColor;
+    padding: 0.4em 1em;
+    background-color: #FFF;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0;
+    border-radius: 0.4em;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    text-align: center;
+    color: inherit;
+}
+
+.ag_reserve-btn:hover,
+.ag_reserve-btn:focus {
+    background-color: transparent;
+    color: #FFF;
+    border: 0.08em solid #FFF;
+    outline: none;
+}
+
+.ag_reserve-btn:active {
+    background-color: #000;
+}
+
+/* Actions (reservation button & more info button) */
+.ag_event-actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    margin: 1em 0 0 0;
+}
+
+.ag_more-button-bottom {
+    display: none;
+    margin: 2em auto 0 auto;
+}
+
+.ag_event.expanded .ag_event-actions .ag_more-button {
+    display: none;
+}
+
+.ag_event.expanded .ag_more-text .ag_more-button-bottom {
+    display: inline-block;
+}
+
+/* Events details */
+.ag_event.expanded .ag_event-duration,
+.ag_event.expanded .ag_event-prix,
+.ag_event.expanded .ag_event-lieu,
+.ag_event.expanded .ag_event-lieu-detail,
+.ag_event.expanded .ag_event-contact,
+.ag_event.expanded .ag_event-contact-tel,
+.ag_event.expanded .ag_event-contact-url,
+.ag_event.expanded .ag_event-information {
+    padding-top: 0.5em;
+}
+
+.ag_event-details {
+    background: rgba(255, 255, 255, 0.08);
+    width: 100%;
+    box-sizing: border-box;
+    align-self: stretch;
+    color: #fff;
+    margin: 1.5em 0 1em 0;
+    padding: 0 1.2em 0.4em 1.2em;
+    font-size: 1em;
+    box-shadow: 0 0.5em 2em rgba(0, 0, 0, 0.05);
+}
+
+.ag_event-details>div {
+    margin-bottom: 0.5em;
+    line-height: 1.5;
+    opacity: 0.92;
+}
+
+.ag_event-details>div:empty {
+    display: none;
+}
+
+/* Contacts details */
+.ag_event-contact,
+.ag_event-contact-tel,
+.ag_event-contact-url {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5em;
+    text-align: left;
+}
+
+.ag_event-contact a,
+.ag_event-contact a:visited,
+.ag_event-contact a:active,
+.ag_event-contact a:link {
+    color: #FFF !important;
+    font-weight: bold !important;
+    text-decoration: underline !important;
+    transition: color 0.2s;
+    word-break: break-all;
+}
+
+.ag_event-contact a:hover,
+.ag_event-contact a:focus {
+    color: #000 !important;
+    text-decoration: underline !important;
+}
+
+/* External location */
+.ag_lieu_exterieur {
+    font-weight: bold;
+    margin-bottom: 0.7em;
+    color: #fff;
+}
+
+.ag_event.expanded .ag_lieu_resume {
+    display: none !important;
+}
+
+.ag_lieu_resume {
+    padding-top: 1em;
+}
+
+/* Hide  outdoor location when block is expanded */
+.ag_event.expanded .ag_lieu_exterieur {
+    display: none;
+}
+
+/* All categories button */
+.ag_cat-btn-tous {
+    background: #fff;
+    color: #111;
+    border: 1.5px solid #111;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+}
+
+.ag_cat-btn-tous:hover,
+.ag_cat-btn-tous:focus {
+    background: #111;
+    color: #fff;
+    border: 1.5px solid #111;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .ag_container {
+        grid-template-columns: 1fr;
+        margin: 0 5em;
+    }
+
+    .ag_filter-btn {
+        padding: 0.8em;
+    }
+}
+
+@media (max-width: 700px) {
+    .ag_container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 1080px) {
+    .ag_filter-btn {
+        padding: 0.7em;
+    }
+
+    .ag_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="agenda.css">
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <title>Agenda dynamique</title>
+</head>
+
+<body>
+  <div id="ag_agenda-ad21">
+    <div class="ag_category-filters">
+      <div class="ag_filter-btn ag_all-tag active ag_cat-btn ag_cat-btn-tous" tabindex="0" role="button" onclick="filterEvents(['all'], event)"
+        aria-label="Afficher tous les événements">Tous</div>
+      <div class="ag_filter-btn ag_atelier" tabindex="0" role="button"
+        onclick="filterEvents(['ag_atelier', 'ag_atelier-arch'], event)" aria-label="Afficher seulement les ateliers">
+        Ateliers</div>
+      <div class="ag_filter-btn ag_conference" tabindex="0" role="button"
+        onclick="filterEvents(['ag_conference', 'ag_conference-jc'], event)"
+        aria-label="Afficher seulement les conférences">Conférences</div>
+      <div class="ag_filter-btn ag_cafe-arch" tabindex="0" role="button" onclick="filterEvents(['ag_cafe-arch'], event)"
+        aria-label="Afficher seulement les café-archives">Café-archives</div>
+      <div class="ag_filter-btn ag_vin-arch" tabindex="0" role="button" onclick="filterEvents(['ag_vin-arch'], event)"
+        aria-label="Afficher seulement les dégustations de vin">Archives en vin</div>
+      <div class="ag_filter-btn ag_concert" tabindex="0" role="button" onclick="filterEvents(['ag_concert'], event)"
+        aria-label="Afficher seulement les concerts">Concerts</div>
+      <div class="ag_filter-btn ag_exposition" tabindex="0" role="button"
+        onclick="filterEvents(['ag_exposition'], event)"
+        aria-label="Afficher seulement les expositions et les visites d'exposition">Expositions</div>
+      <div class="ag_filter-btn ag_promenade" tabindex="0" role="button"
+        onclick="filterEvents(['ag_promenade', 'ag_visite'], event)"
+        aria-label="Afficher seulement les promenades et les visites">Promenades & visites</div>
+      <div class="ag_filter-btn ag_projection" tabindex="0" role="button"
+        onclick="filterEvents(['ag_projection'], event)" aria-label="Afficher seulement les projections">Projections
+      </div>
+            <div class="ag_filter-btn ag_rencontre" tabindex="0" role="button"
+        onclick="filterEvents(['ag_rencontre'], event)"
+        aria-label="Afficher seulement les rencontres">Rencontres</div>
+    </div>
+
+    <div class="ag_container">
+      <!-- Les événements s'injectent ici -->
+    </div>
+
+    <div id="ag_event-template" style="display:none;">
+      <div class="ag_event" data-category="" data-date="">
+        <div class="ag_event-date"></div>
+        <div class="ag_event-tag"></div>
+        <h3 class="ag_event-title"></h3>
+        <div class="ag_event-short"></div>
+        <div class="ag_lieu_resume" style="display:none"></div>
+        <div class="ag_event-actions">
+          <div class="ag_more-button" tabindex="0" role="button">Plus d'infos</div>
+          <div class="ag_reserve-btn" style="display:none;" tabindex="0" role="button">Réserver</div>
+        </div>
+        <div class="ag_more-text">
+          <div class="ag_event-long"></div>
+          <div class="ag_event-details">
+            <div class="ag_event-duration"></div>
+          <div class="ag_event-prix"></div>
+          <div class="ag_event-lieu"></div>
+          <div class="ag_event-contact"></div>
+          <div class="ag_event-information"></div>
+          </div>
+          <img class="ag_event-image" style="display:none;" />
+          <div class="ag_more-button ag_more-button-bottom" tabindex="0" role="button">Moins d'infos</div>
+        </div>
+        
+        <span class="ag_event-id" hidden></span>
+      </div>
+
+      <div id="ag_no-events-message" style="display:none; text-align:center; margin:2em; font-size:1.2em; color:#888;">
+        Aucun événement à afficher pour cette catégorie.
+      </div>
+
+    </div>
+
+    <script src="agenda.js"></script>
+</body>
+
+
+
+</html>
